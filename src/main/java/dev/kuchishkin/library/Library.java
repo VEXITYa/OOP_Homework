@@ -6,23 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private List<Publication> publications;
+    private final List<Publication> publications;
+
     public Library() {
         this.publications = new ArrayList<>();
     }
+
     public Library(List<Publication> publications) {
         this.publications = publications != null ? new ArrayList<>(publications) : new ArrayList<>();
     }
+
     public void addPublication(Publication pub){
         if(pub != null && !publications.contains(pub)){
             publications.add(pub);
         }
     }
+
     public void listPublications(){
         System.out.println("Publications:");
         publications.forEach(System.out::println);
         System.out.println();
     }
+
     public void searchByAuthor(String author){
         System.out.println("Found Publications by Author:");
         publications.stream()
@@ -30,6 +35,7 @@ public class Library {
                 .forEach(System.out::println);
         System.out.println();
     }
+
     public  void searchByTitle(String title){
         System.out.println("Found Publications by Title:");
         publications.stream()
@@ -37,6 +43,7 @@ public class Library {
                 .forEach(System.out::println);
         System.out.println();
     }
+
     public void searchByYear(int year){
         System.out.println("Found Publications by Year:");
         publications.stream()

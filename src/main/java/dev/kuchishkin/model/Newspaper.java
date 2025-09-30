@@ -9,22 +9,27 @@ public class Newspaper extends Publication{
         super(title, author, year);
         setPublicationDay(publicationDay);
     }
+
     public String getPublicationDay() {
         return publicationDay;
     }
+
     public void setPublicationDay(String publicationDay) {
         if(publicationDay != null &&  !publicationDay.isEmpty()){
             this.publicationDay = publicationDay;
         }
     }
+
     @Override
     public String getType() {
         return "Newspaper";
     }
+
     @Override
     public String toString() {
         return "type: Newspaper, " + super.toString() + ", publicationDay: " + publicationDay;
     }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Newspaper newspaper){
@@ -32,6 +37,7 @@ public class Newspaper extends Publication{
         }
         return false;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), publicationDay);

@@ -9,25 +9,31 @@ public class Magazine extends Publication{
         super(title, author, year);
         setIssueNumber(issueNumber);
     }
+
     public Magazine(){
         super();
     }
+
     public int getIssueNumber() {
         return issueNumber;
     }
+
     public void setIssueNumber(int issueNumber) {
         if(issueNumber > 0){
             this.issueNumber = issueNumber;
         }
     }
+
     @Override
     public String getType() {
         return "Magazine";
     }
+
     @Override
     public String toString() {
         return "type: Magazine, " + super.toString() + ", issueNumber: " + issueNumber;
     }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Magazine magazine){
@@ -35,6 +41,7 @@ public class Magazine extends Publication{
         }
         return false;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), issueNumber);

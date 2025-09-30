@@ -21,9 +21,9 @@ public class Main {
                     1. Add new Publication
                     2. Show all Publications
                     3. Search Publications by Author
-                    4. Search Publications by Title
+                    4. Show amount of Publications
                     5. Search Publications by Year
-                    6. Show amount of Publications
+                    6. Search Publications by Title
                     0. Exit
                     """);
             System.out.println("Select an action:");
@@ -38,36 +38,34 @@ public class Main {
                             3. Newspaper
                             """);
                     int typeChoice = readInt(scanner);
-                    switch(typeChoice){
-                        case 1, 2, 3:
-                            System.out.println("Enter publication title:");
-                            String title = scanner.nextLine();
-                            System.out.println("Enter publication author:");
-                            String author = scanner.nextLine();
-                            System.out.println("Enter publication year:");
-                            int year = readInt(scanner);
-                            switch(typeChoice){
-                                case 1:
-                                    System.out.println("Enter ISBN:");
-                                    String isbn = scanner.nextLine();
-                                    publication = new Book(title, author, year, isbn);
-                                    break;
-                                case 2:
-                                    System.out.println("Enter issue number:");
-                                    int issue = readInt(scanner);
-                                    publication = new Magazine(title, author, year, issue);
-                                    break;
-                                case 3:
-                                    System.out.println("Enter publication day:");
-                                    String day = scanner.nextLine();
-                                    publication = new Newspaper(title, author, year, day);
-                                    break;
-                            }
-                            library.addPublication(publication);
-                            break;
-                        default:
-                            System.out.println("Invalid input");
+                    if(typeChoice >= 1 && typeChoice <= 3){
+                        System.out.println("Enter publication title:");
+                        String title = scanner.nextLine();
+                        System.out.println("Enter publication author:");
+                        String author = scanner.nextLine();
+                        System.out.println("Enter publication year:");
+                        int year = readInt(scanner);
+                        switch(typeChoice){
+                            case 1:
+                                System.out.println("Enter ISBN:");
+                                String isbn = scanner.nextLine();
+                                publication = new Book(title, author, year, isbn);
+                                break;
+                            case 2:
+                                System.out.println("Enter issue number:");
+                                int issue = readInt(scanner);
+                                publication = new Magazine(title, author, year, issue);
+                                break;
+                            case 3:
+                                System.out.println("Enter publication day:");
+                                String day = scanner.nextLine();
+                                publication = new Newspaper(title, author, year, day);
+                                break;
+                        }
+                        library.addPublication(publication);
                     }
+                    else
+                       System.out.println("Invalid input");
                     break;
                 case 2:
                     System.out.println("List of all publications:");
@@ -79,9 +77,8 @@ public class Main {
                     library.searchByAuthor(author);
                     break;
                 case 4:
-                    System.out.println("Enter title:");
-                    String title = scanner.nextLine();
-                    library.searchByTitle(title);
+                    System.out.println("Amount of publications: " + Publication.getPublicationCount());
+                    System.out.println();
                     break;
                 case 5:
                     System.out.println("Enter year:");
@@ -89,8 +86,9 @@ public class Main {
                     library.searchByYear(year);
                     break;
                 case 6:
-                    System.out.println("Amount of publications: " + Publication.getPublicationCount());
-                    System.out.println();
+                    System.out.println("Enter title:");
+                    String title = scanner.nextLine();
+                    library.searchByTitle(title);
                     break;
                 case 0:
                     exit = true;
